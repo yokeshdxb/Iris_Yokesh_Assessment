@@ -20,6 +20,7 @@ PetalWidthCm = st.number_input("PetalWidthCm", min_value=0.1, max_value=2.5, val
 if st.button("Predict Follow-up Requirement"):
     import pandas as pd
     input_df = pd.DataFrame([{
+        'Id': 0,  # Dummy ID, since model expects it
         'sepal length (cm)': SepalLengthCm,
         'sepal width (cm)': SepalWidthCm,
         'petal length (cm)': PetalLengthCm,
