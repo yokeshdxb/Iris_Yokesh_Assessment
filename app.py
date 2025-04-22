@@ -21,10 +21,10 @@ if st.button("Predict Follow-up Requirement"):
     import pandas as pd
     input_df = pd.DataFrame([{
         'Id': 0,  # Dummy ID, since model expects it
-        'sepal length (cm)': SepalLengthCm,
-        'sepal width (cm)': SepalWidthCm,
-        'petal length (cm)': PetalLengthCm,
-        'petal width (cm)': PetalWidthCm
+        'SepalLengthCm': SepalLengthCm,
+        'SepalWidthCm': SepalWidthCm,
+        'PetalLengthCm': PetalLengthCm,
+        'PetalWidthCm': PetalWidthCm
     }])
 
     try:
