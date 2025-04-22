@@ -18,22 +18,23 @@ PetalWidthCm = st.number_input("PetalWidthCm", min_value=0.1, max_value=2.5, val
 
 # Button to predict
 if st.button("Predict Follow-up Requirement"):
-    input_data = np.array([[
-        SepalLengthCm,
-        SepalWidthCm,
-        PetalLengthCm,
-        PetalWidthCm
-    ]])
+    import pandas as pd
+    input_df = pd.DataFrame([{
+        'sepal length (cm)': SepalLengthCm,
+        'sepal width (cm)': SepalWidthCm,
+        'petal length (cm)': PetalLengthCm,
+        'petal width (cm)': PetalWidthCm
+    }])
 
-    # Prediction
-    prediction = model.predict(input_data)[0]
-
-    if prediction == 0:
-        st.success("🟢 Iris Setosa !!!")
-    elif prediction == 1:
-        st.success("🟢 Iris Versicolor !!!")
-    elif prediction == 2:
-        st.success("🟢 Iris Virginica !!!")
-    else:
-        st.error("Wrong Data infeed !!!")
-
+    try:
+        prediction = model.predict(input_df)[0]
+        if prediction == 0:
+            st.success("🟢 Iris Setosa !!!")
+        elif prediction == 1:
+            st.success("🟢 Iris Versicolor !!!")
+        elif prediction == 2:
+            st.success("🟢 Iris Virginica !!!")
+        else:
+            st.error("🔴 Unknown Prediction")
+    except Exception as e:
+        st.error(f"Prediction failed: {e}")
