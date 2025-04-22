@@ -3,8 +3,8 @@ import numpy as np
 import pickle
 
 # Load the model
-with open('iris_classifier.pkl', 'rb') as f1:
-    model = pickle.load(f1)
+with open('iris_classifier.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 # Streamlit UI
 st.title("Iris Prediction Web App")
